@@ -9,6 +9,21 @@
   color: $--color-text-regular;
   font-size: $--font-size-base;
 
+  @include when(visible) {
+    [class*="dropdown-btn"],
+    [class*="dropdown-btn"]:hover,
+    [class*="dropdown-btn"]:focus,
+    [class*="dropdown-btn"]:active {
+      color: $--button-default-selected-text-color;
+      background-color: $--button-default-selected-bg-color;
+    }
+
+    .el-dropdown__caret-button {
+      color: $--button-default-selected-text-color;
+      background-color: $--button-default-selected-bg-color;
+    }
+  }
+
   .el-button-group {
     display: block;
     .el-button {

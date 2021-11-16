@@ -8,7 +8,7 @@
   line-height: 56px;
   font-size: $--menu-item-font-size;
   color: $--menu-item-font-color;
-  padding: 0 20px;
+  padding: 0 8px;
   list-style: none;
   cursor: pointer;
   position: relative;
@@ -21,7 +21,7 @@
   }
 
   i {
-    color: $--color-text-secondary;
+    color: $--menu-item-font-color;
   }
 
   &:hover,

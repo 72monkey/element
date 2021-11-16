@@ -55,7 +55,7 @@ export default {
     popperClass: String,
     width: {},
     visibleArrow: {
-      default: true
+      default: false
     },
     arrowOffset: {
       type: Number,

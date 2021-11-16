@@ -26,6 +26,7 @@
       <span v-if="!inactiveIconClass && inactiveText" :aria-hidden="checked">{{ inactiveText }}</span>
     </span>
     <span class="el-switch__core" ref="core" :style="{ 'width': coreWidth + 'px' }">
+      <i class="el-switch__mark" :class="[checked ? 'el-icon-check' : 'el-icon-close']" />
     </span>
     <span
       :class="['el-switch__label', 'el-switch__label--right', checked ? 'is-active' : '']"
@@ -59,7 +60,7 @@
       },
       width: {
         type: Number,
-        default: 40
+        default: 32
       },
       activeIconClass: {
         type: String,

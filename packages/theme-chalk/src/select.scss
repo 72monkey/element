@@ -32,6 +32,54 @@
     }
   }
 
+  @include when(no-border) {
+    .el-input {
+      &.is-focus {
+        border-color: transparent;
+        .el-input__inner {
+          outline: none;
+          border-color: $--button-default-selected-bg-color;
+          color: $--color-white;
+          background-color: $--button-default-selected-bg-color !important;
+          &::placeholder {
+            color: $--color-white;
+          }
+        }
+        .el-select__caret,
+        .el-input__icon {
+          color: $--color-white;
+        }
+      }
+
+      .el-input__inner {
+        border: none;
+        border-color: transparent;
+        background-color: transparent;
+
+        &:focus {
+          outline: none;
+          border-color: $--button-default-selected-bg-color;
+          color: $--color-white;
+          background-color: $--button-default-selected-bg-color;
+          .el-input__inner::placeholder {
+            color: $--color-white;
+          }
+        }
+
+        &:hover {
+          background-color: $--form-field-hover-bg-color;
+        }
+      }
+
+      .el-input__inner:focus + .el-input__suffix {
+        .el-select__caret,
+        .el-input__icon {
+          color: $--color-white;
+        }
+      }
+    }
+  }
+
   .el-input {
     & .el-select__caret {
       color: $--select-input-color;
@@ -41,7 +89,7 @@
       cursor: pointer;
 
       @include when(reverse) {
-        transform: rotateZ(0deg);
+        // transform: rotateZ(0deg);
       }
 
       @include when(show-close) {

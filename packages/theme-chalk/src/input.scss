@@ -11,9 +11,10 @@
   @include e(inner) {
     display: block;
     resize: vertical;
-    padding: 5px 15px;
+    padding: 5px 6px;
     line-height: 1.5;
     box-sizing: border-box;
+    font-weight: $--input-font-weight;
     width: 100%;
     font-size: inherit;
     color: $--input-font-color;
@@ -25,23 +26,29 @@
 
     &::placeholder {
       color: $--input-placeholder-color;
+      font-weight: $--input-font-weight;
     }
 
     &:hover {
-      border-color: $--input-hover-border;
+      background-color: $--form-field-hover-bg-color;
+      border-color: $--form-field-hover-border-color;
+      color: $--form-field-hover-text-color;
     }
 
     &:focus {
       outline: none;
-      border-color: $--input-focus-border;
+      border-color: $--form-field-focus-border-color;
+      background-color: $--form-field-focus-bg-color;
+      color: $--color-text-regular;
     }
   }
 
   & .el-input__count {
     color: $--color-info;
-    background: $--color-white;
+    // background: $--color-white;
     position: absolute;
     font-size: 12px;
+    font-weight: $--input-font-weight;
     bottom: 5px;
     right: 10px;
   }
@@ -75,6 +82,7 @@
   font-size: $--font-size-base;
   display: inline-block;
   width: 100%;
+  font-family: $--font-family;
   @include scroll-bar;
 
   & .el-input__clear {
@@ -100,6 +108,7 @@
       line-height: initial;
       display: inline-block;
       padding: 0 5px;
+      font-weight: $--input-font-weight;
     }
   }
 
@@ -113,10 +122,11 @@
     color: $--input-font-color;
     display: inline-block;
     font-size: inherit;
+    // font-weight: $--input-font-weight;
     height: $--input-height;
     line-height: $--input-height;
     outline: none;
-    padding: 0 15px;
+    padding: 0 6px;
     transition: $--border-transition-base;
     width: 100%;
 
@@ -126,15 +136,20 @@
 
     &::placeholder {
       color: $--input-placeholder-color;
+      font-weight: $--input-font-weight;
     }
 
     &:hover {
-      border-color: $--input-hover-border;
+      background-color: $--form-field-hover-bg-color;
+      border-color: $--form-field-hover-border-color;
+      color: $--form-field-hover-text-color;
     }
 
     &:focus {
       outline: none;
-      border-color: $--input-focus-border;
+      border-color: $--form-field-focus-border-color;
+      background-color: $--form-field-focus-bg-color;
+      color: $--color-text-regular;
     }
   }
 
@@ -169,6 +184,7 @@
     text-align: center;
     transition: all .3s;
     line-height: $--input-height;
+    font-weight: bold;
 
     &:after {
       content: '';
@@ -287,7 +303,7 @@
     vertical-align: middle;
     display: table-cell;
     position: relative;
-    border: $--border-base;
+    border: $--border-medium;
     border-radius: $--input-border-radius;
     padding: 0 20px;
     width: 1px;

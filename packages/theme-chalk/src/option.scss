@@ -30,6 +30,8 @@
 
     &.selected {
       color: $--select-option-selected-font-color;
+      background-color: $--select-option-selected-background;
+      box-shadow: $--select-option-selected-box-shadow;
       font-weight: bold;
     }
   }

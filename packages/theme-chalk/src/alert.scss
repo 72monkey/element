@@ -17,12 +17,14 @@
 
   @include when(light) {
     .el-alert__closebtn {
+      font-weight: $--alert-close-font-weight;
       color: $--color-text-placeholder;
     }
   }
 
   @include when(dark) {
     .el-alert__closebtn {
+      font-weight: $--alert-close-font-weight;
       color: $--color-white;
     }
     .el-alert__description {

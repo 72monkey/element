@@ -30,11 +30,13 @@
     }
 
     .el-icon-arrow-down {
+      color: $--cascader-input-color;
       transition: transform .3s;
-      font-size: 14px;
+      font-size:$--cascader-input-font-size;
+      font-weight: bold;
 
       @include when(reverse) {
-        transform: rotateZ(180deg);
+        // transform: rotateZ(180deg);
       }
     }
 

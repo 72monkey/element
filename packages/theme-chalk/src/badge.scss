@@ -38,6 +38,10 @@
       border-radius: 50%;
     }
 
+    @include m(undefined) {
+      color: $--color-black;
+    }
+
     @each $type in (primary, success, warning, info, danger) {
       @include m($type) {
         @if $type == primary {

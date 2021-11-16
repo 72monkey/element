@@ -1,7 +1,12 @@
 <template>
   <div
     class="el-select"
-    :class="[selectSize ? 'el-select--' + selectSize : '']"
+    :class="[
+      selectSize ? 'el-select--' + selectSize : '',
+      {
+        'is-no-border': noBorder
+      }
+    ]"
     @click.stop="toggleMenu"
     v-clickoutside="handleClose">
     <div
@@ -301,7 +306,8 @@
       popperAppendToBody: {
         type: Boolean,
         default: true
-      }
+      },
+      noBorder: Boolean
     },
 
     data() {
@@ -694,7 +700,9 @@
         } else {
           this.$emit('input', option.value);
           this.emitChange(option.value);
-          this.visible = false;
+          this.$nextTick(()=> {
+            this.blur();
+          });
         }
         this.isSilentBlur = byClick;
         this.setSoftFocus();

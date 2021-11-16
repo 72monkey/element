@@ -132,6 +132,11 @@ export default {
                           <i class={ ['el-icon-arrow-down', column.filterOpened ? 'el-icon-arrow-up' : ''] }></i>
                         </span>) : ''
                       }
+                      {
+                        column.renderOtherHeader
+                          ? column.renderOtherHeader.call(this._renderProxy, h, { column, $index: cellIndex, store: this.store, _self: this.$parent.$vnode.context })
+                          : ''
+                      }
                     </div>
                   </th>))
                 }
@@ -346,7 +351,7 @@ export default {
       if (this.$isServer) return;
       if (column.children && column.children.length > 0) return;
       /* istanbul ignore if */
-      if (this.draggingColumn && this.border) {
+      if (this.draggingColumn && (this.border || column.resizable)) {
         this.dragging = true;
 
         this.$parent.resizeProxyVisible = true;
@@ -378,9 +383,7 @@ export default {
           const proxyLeft = this.dragState.startLeft + deltaLeft;
 
           resizeProxy.style.left = Math.max(minLeft, proxyLeft) + 'px';
-        };
 
-        const handleMouseUp = () => {
           if (this.dragging) {
             const {
               startColumnLeft,
@@ -390,16 +393,17 @@ export default {
             const columnWidth = finalLeft - startColumnLeft;
             column.width = column.realWidth = columnWidth;
             table.$emit('header-dragend', column.width, startLeft - startColumnLeft, column, event);
-
-            this.store.scheduleLayout();
-
-            document.body.style.cursor = '';
-            this.dragging = false;
-            this.draggingColumn = null;
-            this.dragState = {};
-
-            table.resizeProxyVisible = false;
+            this.store.scheduleLayout(true);
           }
+        };
+
+        const handleMouseUp = () => {
+          document.body.style.cursor = '';
+          this.dragging = false;
+          this.draggingColumn = null;
+          this.dragState = {};
+
+          table.resizeProxyVisible = false;
 
           document.removeEventListener('mousemove', handleMouseMove);
           document.removeEventListener('mouseup', handleMouseUp);
@@ -425,7 +429,7 @@ export default {
 
       if (!column || !column.resizable) return;
 
-      if (!this.dragging && this.border) {
+      if (!this.dragging && (this.border || column.resizable)) {
         let rect = target.getBoundingClientRect();
 
         const bodyStyle = document.body.style;

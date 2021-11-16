@@ -6,6 +6,7 @@
       'el-table--border': border || isGroup,
       'el-table--hidden': isHidden,
       'el-table--group': isGroup,
+      'el-table--resize': resizeProxyVisible,
       'el-table--fluid-height': maxHeight,
       'el-table--scrollable-x': layout.scrollX,
       'el-table--scrollable-y': layout.scrollY,
@@ -47,13 +48,10 @@
       </table-body>
       <div
         v-if="!data || data.length === 0"
-        class="el-table__empty-block"
-        ref="emptyBlock"
-        :style="emptyBlockStyle">
-        <span class="el-table__empty-text" >
-          <slot name="empty">{{ emptyText || t('el.table.emptyText') }}</slot>
-        </span>
-      </div>
+        style="height: 120px;"
+        :style="{
+          width: emptyBlockStyle.width
+        }"></div>
       <div
         v-if="$slots.append"
         class="el-table__append-wrapper"
@@ -208,7 +206,21 @@
         width: layout.scrollY ? layout.gutterWidth + 'px' : '0',
         height: layout.headerHeight + 'px'
       }"></div>
+    <div
+      v-if="!data || data.length === 0"
+      class="el-table__empty-block"
+      :style="{
+        top: height ? 'calc(50% - ' + layout.headerHeight + 'px)' : (layout.headerHeight + 20) + 'px'
+      }"
+      style="position: absolute;"
+      ref="emptyBlock">
+      <slot v-if="$slots.empty" name="empty"></slot>
+      <span v-else class="el-table__empty-text" >
+        {{ emptyText || t('el.table.emptyText') }}
+      </span>
+    </div>
     <div class="el-table__column-resize-proxy" ref="resizeProxy" v-show="resizeProxyVisible"></div>
+    <slot name="other" />
   </div>
 </template>
 
@@ -612,6 +624,11 @@
         immediate: true,
         handler(value) {
           this.store.commit('setData', value);
+          if (this.$ready) {
+            this.$nextTick(() => {
+              this.doLayout();
+            });
+          }
         }
       },
 

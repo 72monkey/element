@@ -9,12 +9,12 @@
 
   @include e(separator) {
     margin: 0 9px;
-    font-weight: bold;
-    color: $--color-text-placeholder;
+    // font-weight: bold;
+    color: $--breadcurmb-text-color;
 
     &[class*=icon] {
       margin: 0 6px;
-      font-weight: normal;
+      // font-weight: normal;
     }
   }
 
@@ -22,17 +22,19 @@
     float: left;
 
     @include e(inner) {
-      color: $--color-text-regular;
+      color: $--breadcurmb-text-color;
 
       &.is-link, & a {
-        font-weight: bold;
+        // font-weight: bold;
         text-decoration: none;
         transition: $--color-transition-base;
-        color: $--color-text-primary;
+        color: $--breadcurmb-text-color;
 
         &:hover {
-          color: $--color-primary;
+          // color: $--color-primary;
           cursor: pointer;
+          text-decoration: underline;
+          transition-duration: 0s,0.15s;
         }
       }
     }
@@ -41,8 +43,8 @@
       .el-breadcrumb__inner,
       .el-breadcrumb__inner a {
         &, &:hover {
-          font-weight: normal;
-          color: $--color-text-regular;
+          // font-weight: normal;
+          color: $--breadcurmb-text-color;
           cursor: text;
         }
       }

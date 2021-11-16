@@ -121,7 +121,7 @@
   @include e(button) {
     width: $--slider-button-size;
     height: $--slider-button-size;
-    border: solid 2px $--slider-main-background-color;
+    border: solid 1px $--slider-button-default-border-color;
     background-color: $--color-white;
     border-radius: 50%;
     transition: .2s;
@@ -130,7 +130,9 @@
     &:hover,
     &.hover,
     &.dragging {
-      transform: scale(1.2);
+      // transform: scale(1.2);
+      border-width: 2px;
+      border-color: $--slider-button-hover-border-color;
     }
 
     &:hover,

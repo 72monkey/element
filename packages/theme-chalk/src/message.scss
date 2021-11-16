@@ -7,7 +7,8 @@
   border-radius: $--border-radius-base;
   border-width: $--border-width-base;
   border-style: $--border-style-base;
-  border-color: $--border-color-lighter;
+  // border-color: $--border-color-lighter;
+  border-color: transparent;
   position: fixed;
   left: 50%;
   top: 20px;
@@ -41,7 +42,7 @@
 
   @include m(success) {
     background-color: $--color-success-lighter;
-    border-color: $--color-success-light;
+    // border-color: $--color-success-light;
 
     .el-message__content {
       color: $--message-success-font-color;
@@ -50,7 +51,7 @@
 
   @include m(warning) {
     background-color: $--color-warning-lighter;
-    border-color: $--color-warning-light;
+    // border-color: $--color-warning-light;
 
     .el-message__content {
       color: $--message-warning-font-color;
@@ -59,7 +60,7 @@
 
   @include m(error) {
     background-color: $--color-danger-lighter;
-    border-color: $--color-danger-light;
+    // border-color: $--color-danger-light;
 
     .el-message__content {
       color: $--message-danger-font-color;
@@ -87,6 +88,7 @@
     cursor: pointer;
     color: $--message-close-icon-color;
     font-size: $--message-close-size;
+    font-weight: $--message-close-font-weight;
 
     &:focus {
       outline-width: 0;

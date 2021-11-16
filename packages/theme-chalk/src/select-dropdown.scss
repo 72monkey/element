@@ -19,6 +19,7 @@
     & .el-select-dropdown__item.selected {
       color: $--select-option-selected-font-color;
       background-color: $--select-dropdown-background;
+      box-shadow: none;
 
       &.hover {
         background-color: $--select-option-hover-background;

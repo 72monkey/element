@@ -45,6 +45,7 @@
     padding-left: 0;
     margin-bottom: 0;
     font-size: $--messagebox-font-size;
+    font-weight: $--messagebox-font-weight;
     line-height: 1;
     color: $--messagebox-title-color;
   }
@@ -61,6 +62,7 @@
     cursor: pointer;
 
     .el-message-box__close {
+      font-weight: $--message-close-font-weight;
       color: $--color-info;
     }
 

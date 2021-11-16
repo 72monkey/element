@@ -118,13 +118,14 @@
   }
 
   .el-table__cell {
-    padding: 12px 0;
+    padding: 8px 0;
     min-width: 0;
     box-sizing: border-box;
     text-overflow: ellipsis;
     vertical-align: middle;
     position: relative;
     text-align: left;
+    border-right: $--table-drag-border;
 
     @include when(center) {
       text-align: center;
@@ -190,13 +191,18 @@
     user-select: none;
     background-color: $--table-header-background-color;
 
+    &:hover {
+      border-right-color: $--table-border-color;
+      background-color: $--table-header-hover-background-color;
+    }
+
     > .cell {
       display: inline-block;
       box-sizing: border-box;
       position: relative;
       vertical-align: middle;
-      padding-left: 10px;
-      padding-right: 10px;
+      // padding-left: 10px;
+      // padding-right: 10px;
       width: 100%;
 
       &.highlight {
@@ -217,6 +223,7 @@
   }
 
   td.el-table__cell {
+    border-bottom: $--table-drag-border;
     div {
       box-sizing: border-box;
     }
@@ -289,6 +296,10 @@
       }
     }
 
+    td {
+      border-bottom: $--table-border;
+    }
+
     th.el-table__cell.gutter:last-of-type {
       border-bottom: $--table-border;
       border-bottom-width: 1px;
@@ -301,6 +312,21 @@
 
   @include m(hidden) {
     visibility: hidden;
+  }
+
+  @include m(resize) {
+    th:hover {
+      border-right-color: transparent;
+    }
+
+    th {
+      &.noclick {
+        background-color: $--table-header-hover-background-color;
+      }
+      &:not(.noclick) {
+        background-color: $--table-header-background-color;
+      }
+    }
   }
 
   @include e((fixed, fixed-right)) {
@@ -359,7 +385,7 @@
 
     & tbody td.el-table__cell {
       border-top: $--table-border;
-      background-color: $--table-row-hover-background-color;
+      background-color: $--background-color-base;
       color: $--table-font-color;
     }
   }
@@ -392,7 +418,7 @@
     overflow: hidden;
 
     & tbody td.el-table__cell {
-      background-color: $--table-row-hover-background-color;
+      background-color: $--background-color-base;
       color: $--table-font-color;
     }
   }
@@ -439,7 +465,7 @@
     display: inline-flex;
     flex-direction: column;
     align-items: center;
-    height: 34px;
+    height: 19px;
     width: 24px;
     vertical-align: middle;
     cursor: pointer;
@@ -450,27 +476,27 @@
   .sort-caret {
     width: 0;
     height: 0;
-    border: solid 5px transparent;
+    border: solid 4px transparent;
     position: absolute;
     left: 7px;
 
     &.ascending {
-      border-bottom-color: $--color-text-placeholder;
-      top: 5px;
+      border-bottom-color: $--color-n50;
+      top: 0px;
     }
 
     &.descending {
-      border-top-color: $--color-text-placeholder;
-      bottom: 7px;
+      border-top-color: $--color-n50;
+      bottom: 1px;
     }
   }
 
   .ascending .sort-caret.ascending {
-    border-bottom-color: $--color-primary;
+    border-bottom-color: $--color-n300;
   }
 
   .descending .sort-caret.descending {
-    border-top-color: $--color-primary;
+    border-top-color: $--color-n300;
   }
 
   .hidden-columns {
@@ -483,7 +509,7 @@
     & .el-table__body {
       & tr.el-table__row--striped {
         td.el-table__cell {
-          background: #FAFAFA;
+          background: $--color-n20;
         }
 
         &.current-row td.el-table__cell {
@@ -515,7 +541,7 @@
     top: 0;
     bottom: 0;
     width: 0;
-    border-left: $--table-border;
+    border-left: $--table-resize-border;
     z-index: 10;
   }
 
@@ -548,6 +574,12 @@
     .el-table__fixed-right {
       bottom: 0;
       overflow: hidden;
+    }
+  }
+
+  @include m(selection) {
+    .el-checkbox {
+      padding-left: 4px;
     }
   }
 

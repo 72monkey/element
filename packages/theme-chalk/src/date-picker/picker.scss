@@ -49,7 +49,7 @@
     margin-left: -5px;
     color: $--color-text-placeholder;
     float: left;
-    line-height: 32px;
+    line-height: 24px;
   }
 
   .el-range-input {
@@ -64,6 +64,7 @@
     text-align: center;
     font-size: $--font-size-base;
     color: $--color-text-regular;
+    background-color: transparent;
 
     &::placeholder {
       color: $--color-text-placeholder;
@@ -76,19 +77,26 @@
     padding: 0 5px;
     margin: 0;
     text-align: center;
-    line-height: 32px;
+    line-height: 24px;
     font-size: 14px;
     width: 5%;
     color: $--color-text-primary;
   }
 
+  .el-input__suffix {
+    .el-input__icon {
+      font-size: $--datepicker-input-font-size;
+      color: $--datepicker-input-color;
+    }
+  }
+
   .el-range__close-icon {
-    font-size: 14px;
-    color: $--color-text-placeholder;
+    font-size: $--datepicker-input-font-size;
+    color: $--datepicker-input-color;
     width: 25px;
     display: inline-block;
     float: right;
-    line-height: 32px;
+    line-height: 24px;
   }
 }
 

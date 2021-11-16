@@ -29,7 +29,7 @@
     props: {
       trigger: {
         type: String,
-        default: 'hover'
+        default: 'click'
       },
       type: String,
       size: {
@@ -60,6 +60,7 @@
         type: Number,
         default: 0
       },
+      value: Boolean,
       disabled: {
         type: Boolean,
         default: false
@@ -86,13 +87,22 @@
     },
 
     mounted() {
+      this.visible = this.value || false;
       this.$on('menu-item-click', this.handleMenuItemClick);
     },
 
     watch: {
+      value(val) {
+        if (val !== this.visible) {
+          this.visible = val;
+          this.broadcast('ElDropdownMenu', 'visible', val);
+          this.$emit('visible-change', val);
+        }
+      },
       visible(val) {
         this.broadcast('ElDropdownMenu', 'visible', val);
         this.$emit('visible-change', val);
+        this.$emit('input', val);
       },
       focusing(val) {
         const selfDefine = this.$el.querySelector('.el-dropdown-selfdefine');
@@ -283,7 +293,13 @@
       const menuElm = disabled ? null : this.$slots.dropdown;
 
       return (
-        <div class="el-dropdown" v-clickoutside={hide} aria-disabled={disabled}>
+        <div class="el-dropdown"
+          class={{
+            'el-dropdown': true,
+            'is-visible': this.visible
+          }}
+          v-clickoutside={hide}
+          aria-disabled={disabled}>
           {triggerElm}
           {menuElm}
         </div>

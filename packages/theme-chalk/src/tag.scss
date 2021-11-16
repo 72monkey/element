@@ -3,11 +3,12 @@
 
 @mixin genTheme($backgroundColorWeight, $borderColorWeight, $fontColorWeight, $hoverColorWeight) {
   background-color: mix($--tag-primary-color, $--color-white, $backgroundColorWeight);
-  border-color: mix($--tag-primary-color, $--color-white, $borderColorWeight);
+  // border-color: mix($--tag-primary-color, $--color-white, $borderColorWeight);
+  border-color: transparent;
   color: mix($--tag-primary-color, $--color-white, $fontColorWeight);
 
   @include when(hit) {
-    border-color: $--tag-primary-color;
+    // border-color: $--tag-primary-color;
   }
 
   .el-tag__close {
@@ -20,11 +21,11 @@
 
   &.el-tag--info {
     background-color: mix($--tag-info-color, $--color-white, $backgroundColorWeight);
-    border-color: mix($--tag-info-color, $--color-white, $borderColorWeight);
+    // border-color: mix($--tag-info-color, $--color-white, $borderColorWeight);
     color: mix($--tag-info-color, $--color-white, $fontColorWeight);
 
     @include when(hit) {
-      border-color: $--tag-info-color;
+      // border-color: $--tag-info-color;
     }
 
     .el-tag__close {
@@ -38,11 +39,11 @@
 
   &.el-tag--success {
     background-color: mix($--tag-success-color, $--color-white, $backgroundColorWeight);
-    border-color: mix($--tag-success-color, $--color-white, $borderColorWeight);
+    // border-color: mix($--tag-success-color, $--color-white, $borderColorWeight);
     color: mix($--tag-success-color, $--color-white, $fontColorWeight);
 
     @include when(hit) {
-      border-color: $--tag-success-color;
+      // border-color: $--tag-success-color;
     }
 
     .el-tag__close {
@@ -56,11 +57,11 @@
 
   &.el-tag--warning {
     background-color: mix($--tag-warning-color, $--color-white, $backgroundColorWeight);
-    border-color: mix($--tag-warning-color, $--color-white, $borderColorWeight);
+    // border-color: mix($--tag-warning-color, $--color-white, $borderColorWeight);
     color: mix($--tag-warning-color, $--color-white, $fontColorWeight);
 
     @include when(hit) {
-      border-color: $--tag-warning-color;
+      // border-color: $--tag-warning-color;
     }
 
     .el-tag__close {
@@ -74,11 +75,11 @@
 
   &.el-tag--danger {
     background-color: mix($--tag-danger-color, $--color-white, $backgroundColorWeight);
-    border-color: mix($--tag-danger-color, $--color-white, $borderColorWeight);
+    // border-color: mix($--tag-danger-color, $--color-white, $borderColorWeight);
     color: mix($--tag-danger-color, $--color-white, $fontColorWeight);
 
     @include when(hit) {
-      border-color: $--tag-danger-color;
+      // border-color: $--tag-danger-color;
     }
 
     .el-tag__close {

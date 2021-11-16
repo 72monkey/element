@@ -48,7 +48,7 @@ export default {
               return acc.concat(this.wrappedRowRender(row, acc.length));
             }, [])
           }
-          <el-tooltip effect={ this.table.tooltipEffect } placement="top" ref="tooltip" content={ this.tooltipContent }></el-tooltip>
+          <el-tooltip effect={ this.table.tooltipEffect } popper-class="el-table-tooltip" placement="top" ref="tooltip" content={ this.tooltipContent }></el-tooltip>
         </tbody>
       </table>
     );
